@@ -11,7 +11,7 @@ export const registerController = async (req, res) =>{
         status: 201,
         message: 'Successfully register a user',
         data: {
-            user
+            user: user
         }
     })
 }
@@ -22,7 +22,7 @@ export const loginController = async (req, res) =>{
     const session = await login(req.body);
 
 
-    res.cookie('accessToken', session.accessToken, {
+    res.cookie('sessionId', session._id, {
         httpOnly: true,
         expires: new Date(Date.now() + FIFTEEN_MINUTES) 
     })
@@ -39,8 +39,8 @@ export const loginController = async (req, res) =>{
         status: 201,
         message: 'Successfully login a user',
         data: {
-            accessToken: accessToken,
-            refreshToken: refreshToken
+            accessToken: session.accessToken,
+            refreshToken: session.refreshToken
         }
     })
 

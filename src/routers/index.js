@@ -1,5 +1,11 @@
-import authRouter from "./authRouter";
+import authRouter from "./authRouter.js";
+import travelerRouter from "./travelerRouter.js";
+import storyRouter from "./storyRouter.js";
+import { Router } from "express";
 
+const router = Router();
 
-
-authRouter();
+router.use('/auth', authRouter)
+router.use('/user', travelerRouter);
+router.use('/stories', storyRouter)
+export default router;

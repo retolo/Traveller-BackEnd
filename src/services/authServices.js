@@ -16,9 +16,12 @@ export const register = async (payload) =>{
     const encryptedPassword = await bcrypt.hash(payload.password,10)
 
 
-    await UserCollection.create(
-        ...payload,
-        encryptedPassword
+    return await UserCollection.create({
+        name: payload.name,
+        email: payload.email,
+        password: encryptedPassword
+    }
+        
     )
 }
 
@@ -48,7 +51,7 @@ export const login = async (payload) =>{
     await SessionCollection.deleteOne({userId: user._id});
 
 
-    await SessionCollection.create({
+    return await SessionCollection.create({
         userId: user._id,
         accessToken: accessToken,
         refreshToken: refreshToken,

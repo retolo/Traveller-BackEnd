@@ -2,7 +2,7 @@ import { model, Schema } from "mongoose";
 
 
 
-const travellersModel = new Schema({
+const travelersModel = new Schema({
     img: {
         type: String,
         required: true
@@ -35,4 +35,4 @@ const travellersModel = new Schema({
 
 
 
-export const TravellersCollection = model('travellers', travellersModel);
+export const TravelersCollection = model('travelers', travelersModel);
