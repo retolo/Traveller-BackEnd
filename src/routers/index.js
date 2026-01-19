@@ -7,5 +7,5 @@ const router = Router();
 
 router.use('/auth', authRouter)
 router.use('/user', travelerRouter);
-router.use('/stories', storyRouter)
+router.use('/story', storyRouter)
 export default router;
